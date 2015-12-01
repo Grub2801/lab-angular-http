@@ -3,6 +3,7 @@ angular.module('TheCriminalsApp', [])
 
     $scope.all = [];
     $scope.newCriminal = {};
+    $scope.addCriminal = addCriminal;
 
     getCriminals();
     function getCriminals() {
@@ -14,12 +15,12 @@ angular.module('TheCriminalsApp', [])
     }
 
     function addCriminal() {
-    $http
-      .post('http://localhost:3000/criminals', $scope.newCriminal)
-      .success(function (data){
-        getCriminals();
-      });
-    $scope.newCriminal = {};
+      $http
+        .post('http://localhost:3000/criminals', $scope.newCriminal)
+        .success(function (data){
+          getCriminals();
+        });
+      $scope.newCriminal = {};
     }
 
   }])
