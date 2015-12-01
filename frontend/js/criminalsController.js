@@ -4,6 +4,9 @@ angular.module('TheCriminalsApp', [])
     $scope.all = [];
     $scope.newCriminal = {};
     $scope.addCriminal = addCriminal;
+    $scope.deleteCriminal = deleteCriminal;
+    $scope.showCriminal = showCriminal;
+    $scope.editCriminal = {};
 
     getCriminals();
     function getCriminals() {
@@ -21,6 +24,18 @@ angular.module('TheCriminalsApp', [])
           getCriminals();
         });
       $scope.newCriminal = {};
+    }
+
+    function deleteCriminal(id) {
+      $http
+        .delete('http://localhost:3000/criminals/' + id)
+        .success (function(){
+          getCriminals();
+        })
+    }
+
+    function showCriminal(criminal) {
+      $scope.editCriminal = criminal;
     }
 
   }])
