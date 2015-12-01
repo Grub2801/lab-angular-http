@@ -7,6 +7,7 @@ angular.module('TheCriminalsApp', [])
     $scope.deleteCriminal = deleteCriminal;
     $scope.showCriminal = showCriminal;
     $scope.editCriminal = {};
+    $scope.updateCriminal = updateCriminal;
 
     getCriminals();
     function getCriminals() {
@@ -37,5 +38,13 @@ angular.module('TheCriminalsApp', [])
     function showCriminal(criminal) {
       $scope.editCriminal = criminal;
     }
+
+    function updateCriminal(id) {
+      $http
+        .patch('http://localhost:3000/presidents/' + id)
+        .success (function(){
+          getCriminals();
+        })
+    };
 
   }])
