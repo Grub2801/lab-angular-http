@@ -13,7 +13,8 @@
     <h1>Infamous Criminals</h1>
     <ul id="criminals">
       <li ng-repeat="criminal in all">
-        <span class="status">{{ criminal.status }}</span> <strong>{{ criminal.name }}</strong> <em>{{ criminal.location }}</em>
+        <span class="status" ng-class="{'alive' : criminal.status=='alive' , 'dead' : criminal.status=='dead'}">
+           {{ criminal.status }}</span> <strong>{{ criminal.name }}</strong> <em>{{ criminal.location }}</em>
         <button class="delete" href="" ng-click="deleteCriminal(criminal._id)">X</button>
         <button class="edit" href="" ng-click="showCriminal(criminal)">Edit</button>
       </li>

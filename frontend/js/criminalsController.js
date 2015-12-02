@@ -39,10 +39,10 @@ angular.module('TheCriminalsApp', [])
       $scope.editCriminal = criminal;
     }
 
-    function updateCriminal(id) {
+    function updateCriminal() {
       $http
-        .patch('http://localhost:3000/presidents/' + id)
-        .success (function(){
+        .patch('http://localhost:3000/criminals/' + $scope.editCriminal._id, $scope.editCriminal)
+        .success (function() {
           getCriminals();
         })
     };
